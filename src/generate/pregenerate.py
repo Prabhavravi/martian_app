@@ -13,7 +13,11 @@ from tqdm import tqdm
 
 from src.models.cgan import ConditionalGenerator
 
-DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+DEVICE = (
+    torch.device("mps")
+    if torch.backends.mps.is_available()
+    else torch.device("cuda" if torch.cuda.is_available() else "cpu")
+)
 
 BIOMES = ["mountain", "sand_plain", "dune", "crater", "rocky_outcrop"]
 
@@ -25,7 +29,7 @@ def load_generator(
     img_size: int = 256,
 ) -> ConditionalGenerator:
     """Load a fine-tuned generator from a checkpoint file."""
-    checkpoint = torch.load(checkpoint_path, map_location=DEVICE)
+    checkpoint = torch.load(checkpoint_path, map_location=DEVICE, weights_only=False)
     state_dict = checkpoint.get("generator", checkpoint)
 
     generator = ConditionalGenerator(

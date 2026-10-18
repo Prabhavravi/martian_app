@@ -1,0 +1,15 @@
+# URLs for dune biome (sand dunes)
+# Paste direct image URLs here, one per line.
+# Example source:
+#   https://commons.wikimedia.org/wiki/File:Grand_Erg_Occidental_and_Grand_Erg_Oriental_(MODIS_2019-06-28).jpg
+
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia20/pia20755/PIA20755.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia20/pia20284/PIA20284.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia20/pia20283/PIA20283.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia20/pia20169/PIA20169.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia20/pia20168/PIA20168.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia19/pia19929/PIA19929.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia19/pia19928/PIA19928.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia19/pia19358/PIA19358.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia18/pia18882/PIA18882.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia17/pia17944/PIA17944.jpg

@@ -1,0 +1,19 @@
+# URLs for sand_plain biome (desert sand terrain, sand sheets)
+# All direct NASA JPL Photojournal JPEG links
+
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia20/pia20755/PIA20755.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia20/pia20284/PIA20284.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia20/pia20283/PIA20283.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia20/pia20169/PIA20169.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia20/pia20168/PIA20168.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia19/pia19929/PIA19929.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia19/pia19928/PIA19928.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia19/pia19302/PIA19302.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia19/pia19293/PIA19293.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia19/pia19305/PIA19305.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia18/pia18890/PIA18890.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia18/pia18889/PIA18889.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia18/pia18820/PIA18820.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia18/pia18818/PIA18818.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia18/pia18931/PIA18931.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia18/pia18930/PIA18930.jpg

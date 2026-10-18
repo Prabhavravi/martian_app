@@ -1,0 +1,24 @@
+# URLs for rocky_outcrop biome (rocky terrain / outcrops)
+# Paste direct image URLs here, one per line.
+# Example source:
+#   https://science.nasa.gov/resource/gravel-covered-martian-surface/  -> copy image URL
+
+
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia18/pia18387/PIA18387.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia18/pia18087/PIA18087.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia17/pia17959/PIA17959.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia17/pia17768/PIA17768.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia17/pia17592/PIA17592.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia17/pia17481/PIA17481.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia17/pia17360/PIA17360.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia17/pia17268/PIA17268.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia16/pia16927/PIA16927.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia16/pia16815/PIA16815.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia16/pia16806/PIA16806.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia16/pia16805/PIA16805.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia16/pia16804/PIA16804.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia16/pia16803/PIA16803.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia16/pia16796/PIA16796.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia16/pia16795/PIA16795.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia25/pia25415/PIA25415.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia23/pia23975/PIA23975.jpg

@@ -1,0 +1,23 @@
+# URLs for crater biome (Mars craters)
+# Paste direct image URLs here, one per line.
+# Example source:
+#   https://mars.nasa.gov/raw-images/  -> click an image, copy "Download" URL
+
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia19/pia19309/PIA19309.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia19/pia19308/PIA19308.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia19/pia19304/PIA19304.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia19/pia19303/PIA19303.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia19/pia19296/PIA19296.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia19/pia19290/PIA19290.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia19/pia19289/PIA19289.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia19/pia19288/PIA19288.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia19/pia19176/PIA19176.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia19/pia19175/PIA19175.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia19/pia19139/PIA19139.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia19/pia19138/PIA19138.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia19/pia19131/PIA19131.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia19/pia19124/PIA19124.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia19/pia19123/PIA19123.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia19/pia19106/PIA19106.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia18/pia18562/PIA18562.jpg
+https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia18/pia18561/PIA18561.jpg

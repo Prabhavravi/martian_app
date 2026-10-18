@@ -13,10 +13,14 @@ from torchvision import transforms
 from torchvision.datasets import ImageFolder
 from tqdm import tqdm
 
-from .cgan import ConditionalDiscriminator, ConditionalGenerator
-from .losses import bce_with_label_smoothing, hinge_d_loss, hinge_g_loss
+from src.models.cgan import ConditionalDiscriminator, ConditionalGenerator
+from src.models.losses import bce_with_label_smoothing, hinge_d_loss, hinge_g_loss
 
-DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+DEVICE = (
+    torch.device("mps")
+    if torch.backends.mps.is_available()
+    else torch.device("cuda" if torch.cuda.is_available() else "cpu")
+)
 
 
 class TerrainDataset(Dataset):
@@ -48,7 +52,15 @@ def load_pretrained_desert_checkpoint(
     if not checkpoint_path.exists():
         raise FileNotFoundError(f"Checkpoint not found: {checkpoint_path}")
 
-    state = torch.load(checkpoint_path, map_location=DEVICE)
+    state = _load_checkpoint_robust(checkpoint_path)
+
+    if state is None:
+        print(
+            "[fine-tune] Could not load pretrained desert checkpoint "
+            "(StyleGAN2-format pickle requires NVIDIA torch_utils; "
+            "our conditional GAN has a different architecture). "
+            "Initializing weights randomly and training on desert data from scratch."
+        )
 
     # Normalize to a dict of sub-module state dicts
     gen_state = None
@@ -81,6 +93,52 @@ def load_pretrained_desert_checkpoint(
 
     _load_into(generator, gen_state, "generator")
     _load_into(discriminator, disc_state, "discriminator")
+
+
+def _load_checkpoint_robust(checkpoint_path: Path) -> dict | None:
+    """Load a checkpoint, handling missing module dependencies (torch_utils, dnnlib).
+
+    Returns the loaded state dict, or None if the checkpoint cannot be loaded
+    (e.g., StyleGAN2-format pickles requiring NVIDIA's torch_utils library).
+    """
+    import pickle
+    import sys
+    import types
+
+    class _Placeholder:
+        """Placeholder for classes that can't be imported from missing modules."""
+
+        def __init__(self, *args, **kwargs):
+            pass
+
+        def __getattr__(self, name):
+            return _Placeholder()
+
+        def __call__(self, *args, **kwargs):
+            return _Placeholder()
+
+    class _RobustUnpickler(pickle.Unpickler):
+        def find_class(self, module, name):
+            # Create stub modules for torch_utils, dnnlib, etc.
+            if module.startswith(("torch_utils", "dnnlib")):
+                if module not in sys.modules:
+                    stub = types.ModuleType(module)
+                    sys.modules[module] = stub
+                return _Placeholder
+            return super().find_class(module, name)
+
+    try:
+        with open(checkpoint_path, "rb") as f:
+            state = _RobustUnpickler(f).load()
+        # Validate that the result is a usable dict with tensor-like values
+        if isinstance(state, dict) and any(
+            hasattr(v, "shape") for v in state.values() if v is not None
+        ):
+            return state
+    except Exception:
+        pass
+
+    return None
 
 
 def train_one_epoch(
