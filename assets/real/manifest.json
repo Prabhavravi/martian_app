@@ -1,0 +1,468 @@
+{
+  "version": 1,
+  "tile_size": [
+    2048,
+    720
+  ],
+  "world_length_px": 16384,
+  "end_behavior": "LOOP",
+  "viewport": {
+    "w": 1280,
+    "h": 720
+  },
+  "scroll_speed_px_per_sec": 300.0,
+  "layers": [
+    {
+      "name": "sky",
+      "speed": 0.15,
+      "tile_w": 2048,
+      "tile_h": 720,
+      "tile_count": 8,
+      "tiles": [
+        {
+          "id": "sky_0000",
+          "index": 0,
+          "texture": "tiles/sky/sky_0000.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20261020,
+          "prompt": "Martian sky band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "sky_0001",
+          "index": 1,
+          "texture": "tiles/sky/sky_0001.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20261021,
+          "prompt": "Martian sky band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "sky_0002",
+          "index": 2,
+          "texture": "tiles/sky/sky_0002.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20261022,
+          "prompt": "Martian sky band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "sky_0003",
+          "index": 3,
+          "texture": "tiles/sky/sky_0003.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20261023,
+          "prompt": "Martian sky band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "sky_0004",
+          "index": 4,
+          "texture": "tiles/sky/sky_0004.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20261024,
+          "prompt": "Martian sky band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "sky_0005",
+          "index": 5,
+          "texture": "tiles/sky/sky_0005.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20261025,
+          "prompt": "Martian sky band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "sky_0006",
+          "index": 6,
+          "texture": "tiles/sky/sky_0006.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20261026,
+          "prompt": "Martian sky band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "sky_0007",
+          "index": 7,
+          "texture": "tiles/sky/sky_0007.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20261027,
+          "prompt": "Martian sky band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        }
+      ]
+    },
+    {
+      "name": "far",
+      "speed": 0.4,
+      "tile_w": 2048,
+      "tile_h": 720,
+      "tile_count": 8,
+      "tiles": [
+        {
+          "id": "far_0000",
+          "index": 0,
+          "texture": "tiles/far/far_0000.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20361023,
+          "prompt": "Distant Martian terrain band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "far_0001",
+          "index": 1,
+          "texture": "tiles/far/far_0001.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20361024,
+          "prompt": "Distant Martian terrain band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "far_0002",
+          "index": 2,
+          "texture": "tiles/far/far_0002.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20361025,
+          "prompt": "Distant Martian terrain band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "far_0003",
+          "index": 3,
+          "texture": "tiles/far/far_0003.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20361026,
+          "prompt": "Distant Martian terrain band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "far_0004",
+          "index": 4,
+          "texture": "tiles/far/far_0004.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20361027,
+          "prompt": "Distant Martian terrain band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "far_0005",
+          "index": 5,
+          "texture": "tiles/far/far_0005.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20361028,
+          "prompt": "Distant Martian terrain band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "far_0006",
+          "index": 6,
+          "texture": "tiles/far/far_0006.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20361029,
+          "prompt": "Distant Martian terrain band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "far_0007",
+          "index": 7,
+          "texture": "tiles/far/far_0007.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20361030,
+          "prompt": "Distant Martian terrain band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        }
+      ]
+    },
+    {
+      "name": "mid",
+      "speed": 0.7,
+      "tile_w": 2048,
+      "tile_h": 720,
+      "tile_count": 8,
+      "tiles": [
+        {
+          "id": "mid_0000",
+          "index": 0,
+          "texture": "tiles/mid/mid_0000.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20461026,
+          "prompt": "Mid-distance Martian terrain band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "mid_0001",
+          "index": 1,
+          "texture": "tiles/mid/mid_0001.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20461027,
+          "prompt": "Mid-distance Martian terrain band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "mid_0002",
+          "index": 2,
+          "texture": "tiles/mid/mid_0002.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20461028,
+          "prompt": "Mid-distance Martian terrain band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "mid_0003",
+          "index": 3,
+          "texture": "tiles/mid/mid_0003.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20461029,
+          "prompt": "Mid-distance Martian terrain band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "mid_0004",
+          "index": 4,
+          "texture": "tiles/mid/mid_0004.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20461030,
+          "prompt": "Mid-distance Martian terrain band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "mid_0005",
+          "index": 5,
+          "texture": "tiles/mid/mid_0005.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20461031,
+          "prompt": "Mid-distance Martian terrain band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "mid_0006",
+          "index": 6,
+          "texture": "tiles/mid/mid_0006.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20461032,
+          "prompt": "Mid-distance Martian terrain band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "mid_0007",
+          "index": 7,
+          "texture": "tiles/mid/mid_0007.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20461033,
+          "prompt": "Mid-distance Martian terrain band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        }
+      ]
+    },
+    {
+      "name": "base",
+      "speed": 1.0,
+      "tile_w": 2048,
+      "tile_h": 720,
+      "tile_count": 8,
+      "tiles": [
+        {
+          "id": "base_0000",
+          "index": 0,
+          "texture": "tiles/base/base_0000.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20561029,
+          "prompt": "Full Martian landscape band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "base_0001",
+          "index": 1,
+          "texture": "tiles/base/base_0001.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20561030,
+          "prompt": "Full Martian landscape band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "base_0002",
+          "index": 2,
+          "texture": "tiles/base/base_0002.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20561031,
+          "prompt": "Full Martian landscape band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "base_0003",
+          "index": 3,
+          "texture": "tiles/base/base_0003.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20561032,
+          "prompt": "Full Martian landscape band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "base_0004",
+          "index": 4,
+          "texture": "tiles/base/base_0004.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20561033,
+          "prompt": "Full Martian landscape band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "base_0005",
+          "index": 5,
+          "texture": "tiles/base/base_0005.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20561034,
+          "prompt": "Full Martian landscape band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "base_0006",
+          "index": 6,
+          "texture": "tiles/base/base_0006.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20561035,
+          "prompt": "Full Martian landscape band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        },
+        {
+          "id": "base_0007",
+          "index": 7,
+          "texture": "tiles/base/base_0007.png",
+          "width": 2048,
+          "height": 720,
+          "seed": 20561036,
+          "prompt": "Full Martian landscape band from pre-rendered panorama",
+          "settings": {
+            "kind": "band",
+            "source": "martian_panorama.png"
+          }
+        }
+      ]
+    }
+  ]
+}
