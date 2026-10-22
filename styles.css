@@ -19,6 +19,22 @@ body { font-family: "Avenir Next", Avenir, Helvetica, Arial, sans-serif; color: 
 .telemetry { position: absolute; top: 29px; right: 32px; font-size: 11px; letter-spacing: 0.14em; color: var(--muted); }
 .telemetry span { color: var(--ink); }
 .telemetry .divider { color: var(--line); padding: 0 8px; }
+.compass { position: absolute; top: 24px; left: 50%; width: 130px; height: 30px; transform: translateX(-50%); color: var(--muted); font-size: 9px; letter-spacing: 0.12em; }
+.compass-label { position: absolute; top: 0; transform: translateX(-50%); }
+.compass-n { left: 50%; color: var(--ink); }
+.compass-e { left: 100%; }
+.compass-s { left: 50%; top: 21px; }
+.compass-w { left: 0; }
+.compass-needle { position: absolute; left: 50%; top: 12px; width: 1px; height: 11px; background: var(--accent); transform-origin: 50% 0; box-shadow: 0 0 8px rgba(230, 160, 108, 0.8); }
+.minimap { position: absolute; right: 32px; bottom: 30px; width: 112px; height: 112px; padding: 10px; border: 1px solid var(--line); background: var(--glass); backdrop-filter: blur(4px); }
+.minimap-grid { display: grid; grid-template-columns: repeat(4, 1fr); width: 90px; height: 90px; }
+.minimap-grid i { border: 1px solid rgba(245, 231, 211, 0.12); }
+.minimap-marker { position: absolute; width: 7px; height: 7px; margin: -3px 0 0 -3px; border: 1px solid #23100c; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 2px rgba(230, 160, 108, 0.22); }
+.minimap-facing { position: absolute; left: 2px; bottom: 2px; width: 2px; height: 18px; background: var(--accent); transform-origin: 50% 100%; }
+.minimap-caption { position: absolute; bottom: -18px; right: 0; white-space: nowrap; color: var(--muted); font-size: 8px; letter-spacing: 0.16em; }
+.controls { position: absolute; left: 50%; bottom: 26px; display: grid; grid-template-columns: repeat(4, 38px); gap: 6px; transform: translateX(-50%); pointer-events: auto; }
+.controls button { width: 38px; height: 32px; padding: 0; border: 1px solid var(--line); border-radius: 2px; color: var(--ink); background: var(--glass); font: 18px/1 Avenir, sans-serif; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.controls button:hover, .controls button:active { border-color: var(--accent); background: rgba(56, 25, 20, 0.72); }
 .hint { position: absolute; bottom: 30px; left: 32px; font-size: 10px; letter-spacing: 0.16em; color: var(--muted); }
 .loading { position: absolute; inset: 0; display: grid; place-items: center; background: radial-gradient(circle at 50% 40%, rgba(91, 43, 30, 0.2), rgba(11, 7, 7, 0.95)); transition: opacity 420ms ease, visibility 420ms ease; }
 .loading.ready { opacity: 0; visibility: hidden; pointer-events: none; }
@@ -28,4 +44,4 @@ h1 { margin: 12px 0 22px; font-size: clamp(24px, 4vw, 42px); line-height: 1; fon
 .progress { height: 2px; background: rgba(245, 231, 211, 0.2); }
 .progress span { display: block; width: 0; height: 100%; background: var(--accent); transition: width 180ms ease; }
 .loading p { margin: 12px 0 0; color: var(--muted); font-size: 11px; letter-spacing: 0.08em; }
-@media (max-width: 600px) { .hud { padding: 20px; } .telemetry { top: 56px; left: 20px; right: auto; } .hint { left: 20px; bottom: 20px; } .rover-frame { inset: 10px; } }
+@media (max-width: 600px) { .hud { padding: 20px; } .telemetry { top: 56px; left: 20px; right: auto; } .compass { top: 84px; left: 20px; transform: none; } .minimap { right: 20px; bottom: 82px; transform: scale(0.9); transform-origin: bottom right; } .controls { bottom: 20px; } .hint { left: 20px; bottom: 68px; } .rover-frame { inset: 10px; } }

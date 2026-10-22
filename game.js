@@ -8,6 +8,9 @@
   var progressText = document.getElementById("progress-text");
   var headingReadout = document.getElementById("heading");
   var coordsReadout = document.getElementById("coords");
+  var compassNeedle = document.getElementById("compass-needle");
+  var minimapMarker = document.getElementById("minimap-marker");
+  var minimapFacing = document.getElementById("minimap-facing");
   var images = {};
   var state = { x: MartianWorld.WORLD.start.x, y: MartianWorld.WORLD.start.y, heading: MartianWorld.WORLD.start.heading };
   var transition = null;
@@ -90,6 +93,10 @@
     var cardinal = cardinalNames[Math.round(normalized / 90) % 4];
     headingReadout.textContent = String(Math.round(normalized)).padStart(3, "0") + "° " + cardinal;
     coordsReadout.textContent = String(state.x + 1).padStart(2, "0") + " · " + String(state.y + 1).padStart(2, "0");
+    compassNeedle.style.transform = "translateX(-50%) rotate(" + normalized + "deg)";
+    minimapMarker.style.left = (10 + (state.x + 0.5) / MartianWorld.WORLD.width * 90) + "px";
+    minimapMarker.style.top = (10 + (state.y + 0.5) / MartianWorld.WORLD.height * 90) + "px";
+    minimapFacing.style.transform = "rotate(" + normalized + "deg)";
   }
 
   function requestMove(direction) {
@@ -123,6 +130,22 @@
   }
 
   function setTurn(value) { turnInput = value; }
+
+  function bindControls() {
+    var holdButtons = [
+      ["turn-left", -1],
+      ["turn-right", 1]
+    ];
+    holdButtons.forEach(function (entry) {
+      var button = document.getElementById(entry[0]);
+      button.addEventListener("pointerdown", function (event) { event.preventDefault(); if (!transition) setTurn(entry[1]); });
+      button.addEventListener("pointerup", function () { setTurn(0); });
+      button.addEventListener("pointerleave", function () { setTurn(0); });
+      button.addEventListener("pointercancel", function () { setTurn(0); });
+    });
+    document.getElementById("drive-forward").addEventListener("click", function () { requestMove(1); });
+    document.getElementById("drive-back").addEventListener("click", function () { requestMove(-1); });
+  }
 
   function loadImages() {
     var nodes = MartianWorld.WORLD.nodes;
@@ -163,6 +186,7 @@
     if (["ArrowLeft", "ArrowRight", "a", "d", "A", "D"].indexOf(event.key) !== -1) setTurn(0);
   });
   resize();
+  bindControls();
   loadImages();
   requestAnimationFrame(tick);
 }());

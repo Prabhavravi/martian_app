@@ -12,8 +12,25 @@
     <div class="rover-frame" aria-hidden="true"></div>
     <section id="hud" class="hud" aria-live="polite">
       <div class="brand"><span class="brand-mark">◉</span><span>MARTIAN ROVER</span></div>
+      <div class="compass" aria-label="Compass">
+        <span class="compass-label compass-n">N</span><span class="compass-label compass-e">E</span><span class="compass-label compass-s">S</span><span class="compass-label compass-w">W</span>
+        <span id="compass-needle" class="compass-needle"></span>
+      </div>
       <div id="telemetry" class="telemetry">HEADING <span id="heading">000° N</span> <span class="divider">/</span> GRID <span id="coords">01 · 01</span></div>
       <div id="hint" class="hint">A / D · TURN &nbsp;&nbsp; W / S · DRIVE</div>
+      <div id="minimap" class="minimap" aria-label="Grid minimap">
+        <div class="minimap-grid">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <span id="minimap-marker" class="minimap-marker"><span id="minimap-facing" class="minimap-facing"></span></span>
+        <span class="minimap-caption">SURVEY GRID</span>
+      </div>
+      <div class="controls" aria-label="Rover controls">
+        <button id="turn-left" type="button" aria-label="Turn left">←</button>
+        <button id="drive-forward" type="button" aria-label="Drive forward">↑</button>
+        <button id="drive-back" type="button" aria-label="Drive backward">↓</button>
+        <button id="turn-right" type="button" aria-label="Turn right">→</button>
+      </div>
     </section>
     <div id="loading" class="loading">
       <div class="loading-card">
