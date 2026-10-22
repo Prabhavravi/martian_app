@@ -19,7 +19,8 @@ The previous Python/Pygame implementation and its tests are preserved under
 | `data/` | Raw dataset, processed dataset, and cached square terrain chunks | Source data and old generated cache; not needed at runtime | Keep; not loaded by the browser |
 | `outputs/` | Old generated square terrain/elevation output and manifest | Works for the old Python pipeline only | Keep; not loaded by the browser |
 | `_legacy/` | Quarantined previous source, tests, and pipeline | Preserved verbatim from the working tree | Keep for recovery and reference |
-| `*.png` at repo root | Existing landscape, panorama, viewport, and debug images | Readable static assets | Keep; the 4:1 panorama is copied into the new asset location without altering the original |
+| `*.png` at repo root | Existing landscape, viewport, and debug images | Readable static assets | Keep |
+| `assets/panoramas/` | Source panorama images moved from the repo root | Readable static assets | Keep; source images are unmodified |
 | `.gitignore`, `.gitattributes` | Repository metadata | Valid | Keep |
 | `.pytest_cache`, `.ruff_cache`, `.DS_Store` | Local tool/editor caches | Not runtime inputs | Keep untouched; exclude from the new runtime |
 
@@ -29,8 +30,8 @@ Original panorama-like images found at the repository root:
 
 | Path | Dimensions | Notes |
 | --- | --- | --- |
-| `martian_panorama.png` | 2048×512 | The only true 4:1 source panorama; salvage for node 1,1 |
-| `martian_strip.png` | 1280×256 | A 5:1 strip/debug render, not the requested 4:1 source |
+| `assets/panoramas/martian_panorama.png` | 2048×512 | The only true 4:1 source panorama; salvage for node 1,1 |
+| `assets/panoramas/martian_strip.png` | 1280×256 | A 5:1 strip/debug render, not the requested 4:1 source |
 
 Other related images:
 
