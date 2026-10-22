@@ -22,7 +22,8 @@ def main() -> None:
     with tempfile.NamedTemporaryFile("w", suffix=".manifest", delete=False) as manifest_file:
         manifest_path = Path(manifest_file.name)
         for node in nodes:
-            manifest_file.write(f"{node['x']}|{node['y']}|{node.get('source', 'unknown')}|{(root / node['image']).resolve()}\n")
+            source_label = "+".join(node.get("sources", [node.get("source", "unknown")]))
+            manifest_file.write(f"{node['x']}|{node['y']}|{source_label}|{(root / node['image']).resolve()}\n")
     try:
         binary = Path(tempfile.mktemp(prefix="martian-contact-sheet-"))
         subprocess.run(

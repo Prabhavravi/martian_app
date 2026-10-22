@@ -1,12 +1,12 @@
 {
   "sources": {
     "martian_panorama": {
-      "file": "/Users/prabhavravi/Documents/martian_app/assets/panoramas/martian_panorama.png",
+      "file": "assets/panoramas/martian_panorama.png",
       "width": 2048,
       "height": 512
     },
     "martian_panorama_seamless": {
-      "file": "/Users/prabhavravi/Documents/martian_app/assets/panoramas/martian_panorama_seamless.png",
+      "file": "assets/panoramas/martian_panorama_seamless.png",
       "width": 2048,
       "height": 512
     }

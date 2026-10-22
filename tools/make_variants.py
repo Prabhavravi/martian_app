@@ -185,7 +185,11 @@ def make_variants(source_paths: list[Path], output: Path, metadata_path: Path, c
         for path in source_paths:
             dimensions = read_rgb_png(as_png(path, temporary))
             loaded.append(dimensions)
-            source_metadata[source_id(path)] = {"file": str(path), "width": dimensions[0], "height": dimensions[1]}
+            try:
+                metadata_file = str(path.resolve().relative_to(Path.cwd().resolve()))
+            except ValueError:
+                metadata_file = str(path)
+            source_metadata[source_id(path)] = {"file": metadata_file, "width": dimensions[0], "height": dimensions[1]}
         width, height, _ = loaded[0]
         if any((source[0], source[1]) != (width, height) for source in loaded):
             raise RuntimeError("all real panoramas must have matching dimensions")

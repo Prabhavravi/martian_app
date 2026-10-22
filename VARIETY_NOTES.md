@@ -32,3 +32,9 @@ The generator also discovers future images placed in `assets/panoramas/real/`, i
 
 The current source budget is 2 input-file IDs (one underlying captured scene). The strict neighbour rule is impossible with this budget: a 2×2 block has four mutually neighbouring positions when diagonals count, so at least 4 independent source IDs are needed. The achieved status is recorded as `source-budget-limited`; neighbouring colour grades are still all different and are enforced by `tests/variety.test.js`. Four or more genuinely different Colab panoramas would raise the source-distance floor; 12–24 would make the 4×4 grid comfortably varied.
 
+## Step 5: rebuild result
+
+`python3 tools/build_world.py` completed successfully. It discovered 2 current input panorama files, generated 32 distinct derived scene files, assigned 16 distinct mapped scenes, regenerated the labelled `contact_sheet.jpg`, and ran all three Node tests. The source-distance result is 1 node before the change and 2 nodes after the change; the remaining limit is explicitly `source-budget-limited` because both current input files come from one underlying captured landscape. Adding genuinely different `gen_*.jpg` files to `assets/panoramas/real/` and rerunning the command is what would raise it further.
+
+The current grid is 4×4, so no straight route from the start can physically contain 8 nodes; the longest measured route is 4 nodes north, 3 east, 2 west, and 1 south before the edge. The assignment and tests cover every node in the fixed grid without enlarging it.
+
