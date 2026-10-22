@@ -1,0 +1,866 @@
+{
+  "sources": {
+    "martian_panorama": {
+      "file": "/Users/prabhavravi/Documents/martian_app/assets/panoramas/martian_panorama.png",
+      "width": 2048,
+      "height": 512
+    },
+    "martian_panorama_seamless": {
+      "file": "/Users/prabhavravi/Documents/martian_app/assets/panoramas/martian_panorama_seamless.png",
+      "width": 2048,
+      "height": 512
+    }
+  },
+  "variants": {
+    "scene_001.jpg": {
+      "sources": [
+        "martian_panorama"
+      ],
+      "recipe": {
+        "type": "single",
+        "seed": 20261023,
+        "preset": "dusty_afternoon",
+        "feather_px": 0,
+        "parts": [
+          {
+            "source_index": 0,
+            "roll": 1444,
+            "zoom": 0.8738,
+            "mirror": false,
+            "vertical_shift": -7
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama"
+        ]
+      }
+    },
+    "scene_002.jpg": {
+      "sources": [
+        "martian_panorama_seamless"
+      ],
+      "recipe": {
+        "type": "single",
+        "seed": 20261024,
+        "preset": "rust_dusk",
+        "feather_px": 0,
+        "parts": [
+          {
+            "source_index": 1,
+            "roll": 198,
+            "zoom": 0.9827,
+            "mirror": false,
+            "vertical_shift": -5
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama_seamless"
+        ]
+      }
+    },
+    "scene_003.jpg": {
+      "sources": [
+        "martian_panorama"
+      ],
+      "recipe": {
+        "type": "single",
+        "seed": 20261025,
+        "preset": "pale_haze",
+        "feather_px": 0,
+        "parts": [
+          {
+            "source_index": 0,
+            "roll": 943,
+            "zoom": 0.7704,
+            "mirror": false,
+            "vertical_shift": 10
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama"
+        ]
+      }
+    },
+    "scene_004.jpg": {
+      "sources": [
+        "martian_panorama",
+        "martian_panorama_seamless"
+      ],
+      "recipe": {
+        "type": "splice",
+        "seed": 20261026,
+        "preset": "dark_basalt",
+        "feather_px": 250,
+        "parts": [
+          {
+            "source_index": 0,
+            "roll": 539,
+            "zoom": 0.7177,
+            "mirror": false,
+            "vertical_shift": -6
+          },
+          {
+            "source_index": 1,
+            "roll": 1263,
+            "zoom": 0.8917,
+            "mirror": false,
+            "vertical_shift": 9
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama",
+          "martian_panorama_seamless"
+        ]
+      }
+    },
+    "scene_005.jpg": {
+      "sources": [
+        "martian_panorama"
+      ],
+      "recipe": {
+        "type": "single",
+        "seed": 20261027,
+        "preset": "butte_orange",
+        "feather_px": 0,
+        "parts": [
+          {
+            "source_index": 0,
+            "roll": 436,
+            "zoom": 0.9221,
+            "mirror": false,
+            "vertical_shift": 12
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama"
+        ]
+      }
+    },
+    "scene_006.jpg": {
+      "sources": [
+        "martian_panorama_seamless"
+      ],
+      "recipe": {
+        "type": "single",
+        "seed": 20261028,
+        "preset": "dusty_afternoon",
+        "feather_px": 0,
+        "parts": [
+          {
+            "source_index": 1,
+            "roll": 615,
+            "zoom": 0.8524,
+            "mirror": false,
+            "vertical_shift": -6
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama_seamless"
+        ]
+      }
+    },
+    "scene_007.jpg": {
+      "sources": [
+        "martian_panorama"
+      ],
+      "recipe": {
+        "type": "single",
+        "seed": 20261029,
+        "preset": "rust_dusk",
+        "feather_px": 0,
+        "parts": [
+          {
+            "source_index": 0,
+            "roll": 1847,
+            "zoom": 0.7015,
+            "mirror": false,
+            "vertical_shift": -9
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama"
+        ]
+      }
+    },
+    "scene_008.jpg": {
+      "sources": [
+        "martian_panorama",
+        "martian_panorama_seamless"
+      ],
+      "recipe": {
+        "type": "splice",
+        "seed": 20261030,
+        "preset": "pale_haze",
+        "feather_px": 250,
+        "parts": [
+          {
+            "source_index": 0,
+            "roll": 1505,
+            "zoom": 0.7423,
+            "mirror": false,
+            "vertical_shift": -1
+          },
+          {
+            "source_index": 1,
+            "roll": 1945,
+            "zoom": 0.7171,
+            "mirror": false,
+            "vertical_shift": -8
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama",
+          "martian_panorama_seamless"
+        ]
+      }
+    },
+    "scene_009.jpg": {
+      "sources": [
+        "martian_panorama"
+      ],
+      "recipe": {
+        "type": "single",
+        "seed": 20261031,
+        "preset": "dark_basalt",
+        "feather_px": 0,
+        "parts": [
+          {
+            "source_index": 0,
+            "roll": 601,
+            "zoom": 0.8372,
+            "mirror": false,
+            "vertical_shift": -9
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama"
+        ]
+      }
+    },
+    "scene_010.jpg": {
+      "sources": [
+        "martian_panorama_seamless"
+      ],
+      "recipe": {
+        "type": "single",
+        "seed": 20261032,
+        "preset": "butte_orange",
+        "feather_px": 0,
+        "parts": [
+          {
+            "source_index": 1,
+            "roll": 917,
+            "zoom": 0.8539,
+            "mirror": false,
+            "vertical_shift": 4
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama_seamless"
+        ]
+      }
+    },
+    "scene_011.jpg": {
+      "sources": [
+        "martian_panorama"
+      ],
+      "recipe": {
+        "type": "single",
+        "seed": 20261033,
+        "preset": "dusty_afternoon",
+        "feather_px": 0,
+        "parts": [
+          {
+            "source_index": 0,
+            "roll": 1367,
+            "zoom": 0.7285,
+            "mirror": true,
+            "vertical_shift": -7
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama"
+        ]
+      }
+    },
+    "scene_012.jpg": {
+      "sources": [
+        "martian_panorama_seamless"
+      ],
+      "recipe": {
+        "type": "splice",
+        "seed": 20261034,
+        "preset": "rust_dusk",
+        "feather_px": 250,
+        "parts": [
+          {
+            "source_index": 1,
+            "roll": 1788,
+            "zoom": 0.8846,
+            "mirror": false,
+            "vertical_shift": 1
+          },
+          {
+            "source_index": 1,
+            "roll": 364,
+            "zoom": 0.8279,
+            "mirror": false,
+            "vertical_shift": 10
+          },
+          {
+            "source_index": 1,
+            "roll": 187,
+            "zoom": 0.7379,
+            "mirror": false,
+            "vertical_shift": 0
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama_seamless"
+        ]
+      }
+    },
+    "scene_013.jpg": {
+      "sources": [
+        "martian_panorama"
+      ],
+      "recipe": {
+        "type": "single",
+        "seed": 20261035,
+        "preset": "pale_haze",
+        "feather_px": 0,
+        "parts": [
+          {
+            "source_index": 0,
+            "roll": 851,
+            "zoom": 0.9264,
+            "mirror": false,
+            "vertical_shift": -10
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama"
+        ]
+      }
+    },
+    "scene_014.jpg": {
+      "sources": [
+        "martian_panorama_seamless"
+      ],
+      "recipe": {
+        "type": "single",
+        "seed": 20261036,
+        "preset": "dark_basalt",
+        "feather_px": 0,
+        "parts": [
+          {
+            "source_index": 1,
+            "roll": 1519,
+            "zoom": 0.7288,
+            "mirror": false,
+            "vertical_shift": 4
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama_seamless"
+        ]
+      }
+    },
+    "scene_015.jpg": {
+      "sources": [
+        "martian_panorama"
+      ],
+      "recipe": {
+        "type": "single",
+        "seed": 20261037,
+        "preset": "butte_orange",
+        "feather_px": 0,
+        "parts": [
+          {
+            "source_index": 0,
+            "roll": 784,
+            "zoom": 0.7017,
+            "mirror": false,
+            "vertical_shift": -10
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama"
+        ]
+      }
+    },
+    "scene_016.jpg": {
+      "sources": [
+        "martian_panorama",
+        "martian_panorama_seamless"
+      ],
+      "recipe": {
+        "type": "splice",
+        "seed": 20261038,
+        "preset": "dusty_afternoon",
+        "feather_px": 250,
+        "parts": [
+          {
+            "source_index": 0,
+            "roll": 1596,
+            "zoom": 0.766,
+            "mirror": false,
+            "vertical_shift": 3
+          },
+          {
+            "source_index": 1,
+            "roll": 1964,
+            "zoom": 0.8877,
+            "mirror": false,
+            "vertical_shift": 11
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama",
+          "martian_panorama_seamless"
+        ]
+      }
+    },
+    "scene_017.jpg": {
+      "sources": [
+        "martian_panorama"
+      ],
+      "recipe": {
+        "type": "single",
+        "seed": 20261039,
+        "preset": "rust_dusk",
+        "feather_px": 0,
+        "parts": [
+          {
+            "source_index": 0,
+            "roll": 244,
+            "zoom": 0.8097,
+            "mirror": false,
+            "vertical_shift": 12
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama"
+        ]
+      }
+    },
+    "scene_018.jpg": {
+      "sources": [
+        "martian_panorama_seamless"
+      ],
+      "recipe": {
+        "type": "single",
+        "seed": 20261040,
+        "preset": "pale_haze",
+        "feather_px": 0,
+        "parts": [
+          {
+            "source_index": 1,
+            "roll": 1551,
+            "zoom": 0.7016,
+            "mirror": false,
+            "vertical_shift": 3
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama_seamless"
+        ]
+      }
+    },
+    "scene_019.jpg": {
+      "sources": [
+        "martian_panorama"
+      ],
+      "recipe": {
+        "type": "single",
+        "seed": 20261041,
+        "preset": "dark_basalt",
+        "feather_px": 0,
+        "parts": [
+          {
+            "source_index": 0,
+            "roll": 148,
+            "zoom": 0.7714,
+            "mirror": false,
+            "vertical_shift": -12
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama"
+        ]
+      }
+    },
+    "scene_020.jpg": {
+      "sources": [
+        "martian_panorama",
+        "martian_panorama_seamless"
+      ],
+      "recipe": {
+        "type": "splice",
+        "seed": 20261042,
+        "preset": "butte_orange",
+        "feather_px": 250,
+        "parts": [
+          {
+            "source_index": 0,
+            "roll": 661,
+            "zoom": 0.7914,
+            "mirror": false,
+            "vertical_shift": 4
+          },
+          {
+            "source_index": 1,
+            "roll": 1514,
+            "zoom": 0.9193,
+            "mirror": false,
+            "vertical_shift": -3
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama",
+          "martian_panorama_seamless"
+        ]
+      }
+    },
+    "scene_021.jpg": {
+      "sources": [
+        "martian_panorama"
+      ],
+      "recipe": {
+        "type": "single",
+        "seed": 20261043,
+        "preset": "dusty_afternoon",
+        "feather_px": 0,
+        "parts": [
+          {
+            "source_index": 0,
+            "roll": 1917,
+            "zoom": 0.7044,
+            "mirror": false,
+            "vertical_shift": -9
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama"
+        ]
+      }
+    },
+    "scene_022.jpg": {
+      "sources": [
+        "martian_panorama_seamless"
+      ],
+      "recipe": {
+        "type": "single",
+        "seed": 20261044,
+        "preset": "rust_dusk",
+        "feather_px": 0,
+        "parts": [
+          {
+            "source_index": 1,
+            "roll": 127,
+            "zoom": 0.9706,
+            "mirror": true,
+            "vertical_shift": 6
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama_seamless"
+        ]
+      }
+    },
+    "scene_023.jpg": {
+      "sources": [
+        "martian_panorama"
+      ],
+      "recipe": {
+        "type": "single",
+        "seed": 20261045,
+        "preset": "pale_haze",
+        "feather_px": 0,
+        "parts": [
+          {
+            "source_index": 0,
+            "roll": 206,
+            "zoom": 0.9729,
+            "mirror": false,
+            "vertical_shift": 11
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama"
+        ]
+      }
+    },
+    "scene_024.jpg": {
+      "sources": [
+        "martian_panorama_seamless"
+      ],
+      "recipe": {
+        "type": "splice",
+        "seed": 20261046,
+        "preset": "dark_basalt",
+        "feather_px": 250,
+        "parts": [
+          {
+            "source_index": 1,
+            "roll": 57,
+            "zoom": 0.8159,
+            "mirror": false,
+            "vertical_shift": -4
+          },
+          {
+            "source_index": 1,
+            "roll": 1768,
+            "zoom": 0.706,
+            "mirror": false,
+            "vertical_shift": 11
+          },
+          {
+            "source_index": 1,
+            "roll": 1390,
+            "zoom": 0.8999,
+            "mirror": false,
+            "vertical_shift": 10
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama_seamless"
+        ]
+      }
+    },
+    "scene_025.jpg": {
+      "sources": [
+        "martian_panorama"
+      ],
+      "recipe": {
+        "type": "single",
+        "seed": 20261047,
+        "preset": "butte_orange",
+        "feather_px": 0,
+        "parts": [
+          {
+            "source_index": 0,
+            "roll": 1295,
+            "zoom": 0.8922,
+            "mirror": false,
+            "vertical_shift": 7
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama"
+        ]
+      }
+    },
+    "scene_026.jpg": {
+      "sources": [
+        "martian_panorama_seamless"
+      ],
+      "recipe": {
+        "type": "single",
+        "seed": 20261048,
+        "preset": "dusty_afternoon",
+        "feather_px": 0,
+        "parts": [
+          {
+            "source_index": 1,
+            "roll": 1986,
+            "zoom": 0.784,
+            "mirror": false,
+            "vertical_shift": 9
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama_seamless"
+        ]
+      }
+    },
+    "scene_027.jpg": {
+      "sources": [
+        "martian_panorama"
+      ],
+      "recipe": {
+        "type": "single",
+        "seed": 20261049,
+        "preset": "rust_dusk",
+        "feather_px": 0,
+        "parts": [
+          {
+            "source_index": 0,
+            "roll": 1055,
+            "zoom": 0.7947,
+            "mirror": false,
+            "vertical_shift": 0
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama"
+        ]
+      }
+    },
+    "scene_028.jpg": {
+      "sources": [
+        "martian_panorama",
+        "martian_panorama_seamless"
+      ],
+      "recipe": {
+        "type": "splice",
+        "seed": 20261050,
+        "preset": "pale_haze",
+        "feather_px": 250,
+        "parts": [
+          {
+            "source_index": 0,
+            "roll": 1455,
+            "zoom": 0.9149,
+            "mirror": false,
+            "vertical_shift": -1
+          },
+          {
+            "source_index": 1,
+            "roll": 729,
+            "zoom": 0.7453,
+            "mirror": false,
+            "vertical_shift": -8
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama",
+          "martian_panorama_seamless"
+        ]
+      }
+    },
+    "scene_029.jpg": {
+      "sources": [
+        "martian_panorama"
+      ],
+      "recipe": {
+        "type": "single",
+        "seed": 20261051,
+        "preset": "dark_basalt",
+        "feather_px": 0,
+        "parts": [
+          {
+            "source_index": 0,
+            "roll": 1908,
+            "zoom": 0.8546,
+            "mirror": false,
+            "vertical_shift": 2
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama"
+        ]
+      }
+    },
+    "scene_030.jpg": {
+      "sources": [
+        "martian_panorama_seamless"
+      ],
+      "recipe": {
+        "type": "single",
+        "seed": 20261052,
+        "preset": "butte_orange",
+        "feather_px": 0,
+        "parts": [
+          {
+            "source_index": 1,
+            "roll": 623,
+            "zoom": 0.8941,
+            "mirror": false,
+            "vertical_shift": -12
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama_seamless"
+        ]
+      }
+    },
+    "scene_031.jpg": {
+      "sources": [
+        "martian_panorama"
+      ],
+      "recipe": {
+        "type": "single",
+        "seed": 20261053,
+        "preset": "dusty_afternoon",
+        "feather_px": 0,
+        "parts": [
+          {
+            "source_index": 0,
+            "roll": 156,
+            "zoom": 0.9371,
+            "mirror": false,
+            "vertical_shift": 2
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama"
+        ]
+      }
+    },
+    "scene_032.jpg": {
+      "sources": [
+        "martian_panorama",
+        "martian_panorama_seamless"
+      ],
+      "recipe": {
+        "type": "splice",
+        "seed": 20261054,
+        "preset": "rust_dusk",
+        "feather_px": 250,
+        "parts": [
+          {
+            "source_index": 0,
+            "roll": 1093,
+            "zoom": 0.902,
+            "mirror": false,
+            "vertical_shift": 5
+          },
+          {
+            "source_index": 1,
+            "roll": 942,
+            "zoom": 0.9503,
+            "mirror": false,
+            "vertical_shift": -9
+          }
+        ],
+        "haze": true,
+        "sources": [
+          "martian_panorama",
+          "martian_panorama_seamless"
+        ]
+      }
+    }
+  }
+}

@@ -20,3 +20,9 @@ Source sequence means source panorama identity, not filename. All current derive
 
 `contact_sheet.jpg` was generated from these 16 mapped files at 1680×528; its labels show the grid coordinates and the current `base`/`derived` source family. The current variety failure is an asset/source-budget problem, not a movement or transition problem.
 
+## Step 2: offline scene generation
+
+`tools/make_variants.py` now produces 32 deterministic 2048×512 JPEG scenes in `assets/panoramas/derived/` using five colour grades (`dusty_afternoon`, `rust_dusk`, `pale_haze`, `dark_basalt`, `butte_orange`), crop/zoom, horizontal roll, sparse mirroring, vertical shifts, haze, vignette, and 250-pixel feathered splices. The current project has two real panorama files available as inputs (`martian_panorama.png` and its static seamless copy), representing one underlying captured scene; 8 of the 32 generated recipes are two-source splices. `assets/panoramas/variants.json` records each variant's `sources` and complete recipe.
+
+The generator also discovers future images placed in `assets/panoramas/real/`, including `gen_*.jpg`, without requiring source-code edits. With only one underlying captured scene, source separation remains limited until Colab supplies additional genuinely different panoramas; the derived recipes provide visual variation but do not pretend to create new source provenance.
+
