@@ -20,6 +20,12 @@
   var ready = false;
   var transitionDuration = 700;
   var cardinalNames = ["N", "E", "S", "W"];
+  var eventMode = new URLSearchParams(window.location.search).get("event") === "1";
+  var eventAttract = false;
+  var lastInteraction = performance.now();
+  var fullscreenRequested = false;
+  var idleDuration = 60000;
+  if (eventMode) document.body.classList.add("event-mode");
 
   function resize() {
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -116,15 +122,43 @@
     turnInput = 0;
   }
 
+  function resetToStart() {
+    state = { x: MartianWorld.WORLD.start.x, y: MartianWorld.WORLD.start.y, heading: MartianWorld.WORLD.start.heading };
+    transition = null;
+    turnInput = 0;
+  }
+
+  function registerInput() {
+    lastInteraction = performance.now();
+    if (eventAttract) {
+      eventAttract = false;
+      turnInput = 0;
+    }
+  }
+
+  function beginFullscreen() {
+    if (!eventMode || fullscreenRequested) return;
+    fullscreenRequested = true;
+    if (document.documentElement.requestFullscreen) {
+      var request = document.documentElement.requestFullscreen();
+      if (request && request.catch) request.catch(function () {});
+    }
+  }
+
   function tick(time) {
     var dt = lastTime ? Math.min(0.05, (time - lastTime) / 1000) : 0;
     lastTime = time;
     if (bumpTimer > 0) bumpTimer = Math.max(0, bumpTimer - dt * 1000);
+    if (eventMode && !eventAttract && !transition && time - lastInteraction >= idleDuration) {
+      eventAttract = true;
+      resetToStart();
+    }
     if (transition && time - transition.startedAt >= transitionDuration) {
       state = transition.targetState;
       transition = null;
     }
     if (ready && !transition && turnInput) state.heading = MartianWorld.normalizeHeading(state.heading + turnInput * 70 * dt);
+    if (ready && eventAttract && !transition) state.heading = MartianWorld.normalizeHeading(state.heading + 5 * dt);
     render();
     requestAnimationFrame(tick);
   }
@@ -172,9 +206,11 @@
   }
 
   window.addEventListener("resize", resize);
+  window.addEventListener("pointerdown", function () { registerInput(); beginFullscreen(); });
   window.addEventListener("keydown", function (event) {
     var turnKeys = ["ArrowLeft", "ArrowRight", "a", "d", "A", "D"];
     var moveKeys = ["ArrowUp", "ArrowDown", "w", "s", "W", "S"];
+    registerInput();
     if (turnKeys.indexOf(event.key) !== -1 || moveKeys.indexOf(event.key) !== -1) event.preventDefault();
     if (transition) return;
     if (event.key === "ArrowLeft" || event.key === "a" || event.key === "A") setTurn(-1);

@@ -10,6 +10,7 @@
 * { box-sizing: border-box; }
 html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #160c0b; }
 body { font-family: "Avenir Next", Avenir, Helvetica, Arial, sans-serif; color: var(--ink); }
+.event-mode, .event-mode * { cursor: none !important; }
 #game { position: relative; width: 100%; height: 100%; overflow: hidden; background: #3b1b16; }
 #view { display: block; width: 100%; height: 100%; image-rendering: auto; }
 .rover-frame { position: absolute; inset: 16px; pointer-events: none; border: 1px solid rgba(255, 237, 214, 0.22); box-shadow: inset 0 0 100px rgba(15, 6, 4, 0.42); }
