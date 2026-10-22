@@ -90,6 +90,43 @@ def choose_candidates(positions: list[tuple[int, int]], source_pattern: dict[tup
     return selected
 
 
+def choose_strict_candidates(positions: list[tuple[int, int]], candidates: list[dict], fixed: dict[tuple[int, int], dict]) -> dict[tuple[int, int], dict]:
+    """Backtrack a source-disjoint assignment when the source budget permits it."""
+    order = sorted(positions, key=lambda p: sum(distance(p, q) <= 3 for q in positions), reverse=True)
+    options = sorted(candidates, key=lambda item: (len(item["sources"]), item["file"]))
+    selected = dict(fixed)
+    used = {item["file"] for item in selected.values() if "file" in item}
+
+    def valid(position: tuple[int, int], candidate: dict) -> bool:
+        if candidate["file"] in used:
+            return False
+        for other_position, other in selected.items():
+            if distance(position, other_position) <= 3 and shared_sources(candidate, other):
+                return False
+            if king_adjacent(position, other_position) and candidate["preset"] == other["preset"]:
+                return False
+        return True
+
+    def visit(index: int) -> bool:
+        if index == len(order):
+            return True
+        position = order[index]
+        for candidate in options:
+            if not valid(position, candidate):
+                continue
+            selected[position] = candidate
+            used.add(candidate["file"])
+            if visit(index + 1):
+                return True
+            used.remove(candidate["file"])
+            del selected[position]
+        return False
+
+    if not visit(0):
+        raise RuntimeError("could not satisfy source-distance and neighbouring colour-grade constraints")
+    return {position: selected[position] for position in positions}
+
+
 def assign(root: Path, metadata_path: Path, world_path: Path) -> dict:
     metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
     source_ids = sorted(metadata["sources"])
@@ -99,11 +136,15 @@ def assign(root: Path, metadata_path: Path, world_path: Path) -> dict:
     width = height = 4
     start = (1, 3)
     positions = [(x, y) for y in range(height) for x in range(width) if (x, y) != start]
-    if len(source_ids) == 2:
+    fixed_start = {start: {"sources": ["martian_panorama_seamless"], "preset": "real"}}
+    if len(source_ids) >= 4:
+        selected = choose_strict_candidates(positions, variants, fixed_start)
+    elif len(source_ids) == 2:
         source_pattern = best_two_source_pattern(positions, start, source_ids)
+        selected = choose_candidates(positions, source_pattern, variants)
     else:
         source_pattern = {position: source_ids[(position[0] + position[1]) % len(source_ids)] for position in positions}
-    selected = choose_candidates(positions, source_pattern, variants)
+        selected = choose_candidates(positions, source_pattern, variants)
 
     nodes = {}
     for y in range(height):
