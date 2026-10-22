@@ -26,3 +26,9 @@ Source sequence means source panorama identity, not filename. All current derive
 
 The generator also discovers future images placed in `assets/panoramas/real/`, including `gen_*.jpg`, without requiring source-code edits. With only one underlying captured scene, source separation remains limited until Colab supplies additional genuinely different panoramas; the derived recipes provide visual variation but do not pretend to create new source provenance.
 
+## Step 3: deterministic assignment
+
+`tools/assign_nodes.py` now writes explicit node data into `world.js`, including each node's image, `sources`, colour-grade `preset`, and recipe. It uses distinct generated files and searches for a source pattern that maximises the minimum same-source Manhattan distance. The measured minimum improved from 1 node before assignment to 2 nodes after assignment.
+
+The current source budget is 2 input-file IDs (one underlying captured scene). The strict neighbour rule is impossible with this budget: a 2×2 block has four mutually neighbouring positions when diagonals count, so at least 4 independent source IDs are needed. The achieved status is recorded as `source-budget-limited`; neighbouring colour grades are still all different and are enforced by `tests/variety.test.js`. Four or more genuinely different Colab panoramas would raise the source-distance floor; 12–24 would make the 4×4 grid comfortably varied.
+
