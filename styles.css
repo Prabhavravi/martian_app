@@ -1,0 +1,31 @@
+:root {
+  color-scheme: dark;
+  --ink: #f5e7d3;
+  --muted: rgba(245, 231, 211, 0.62);
+  --line: rgba(245, 231, 211, 0.24);
+  --glass: rgba(14, 10, 10, 0.52);
+  --accent: #e6a06c;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #160c0b; }
+body { font-family: "Avenir Next", Avenir, Helvetica, Arial, sans-serif; color: var(--ink); }
+#game { position: relative; width: 100%; height: 100%; overflow: hidden; background: #3b1b16; }
+#view { display: block; width: 100%; height: 100%; image-rendering: auto; }
+.rover-frame { position: absolute; inset: 16px; pointer-events: none; border: 1px solid rgba(255, 237, 214, 0.22); box-shadow: inset 0 0 100px rgba(15, 6, 4, 0.42); }
+.hud { position: absolute; inset: 0; padding: 28px 32px; pointer-events: none; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8); }
+.brand { display: flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: 0.22em; font-weight: 700; }
+.brand-mark { color: var(--accent); font-size: 17px; }
+.telemetry { position: absolute; top: 29px; right: 32px; font-size: 11px; letter-spacing: 0.14em; color: var(--muted); }
+.telemetry span { color: var(--ink); }
+.telemetry .divider { color: var(--line); padding: 0 8px; }
+.hint { position: absolute; bottom: 30px; left: 32px; font-size: 10px; letter-spacing: 0.16em; color: var(--muted); }
+.loading { position: absolute; inset: 0; display: grid; place-items: center; background: radial-gradient(circle at 50% 40%, rgba(91, 43, 30, 0.2), rgba(11, 7, 7, 0.95)); transition: opacity 420ms ease, visibility 420ms ease; }
+.loading.ready { opacity: 0; visibility: hidden; pointer-events: none; }
+.loading-card { width: min(420px, calc(100vw - 48px)); }
+.loading-kicker { color: var(--accent); font-size: 10px; letter-spacing: 0.2em; }
+h1 { margin: 12px 0 22px; font-size: clamp(24px, 4vw, 42px); line-height: 1; font-weight: 500; letter-spacing: -0.03em; }
+.progress { height: 2px; background: rgba(245, 231, 211, 0.2); }
+.progress span { display: block; width: 0; height: 100%; background: var(--accent); transition: width 180ms ease; }
+.loading p { margin: 12px 0 0; color: var(--muted); font-size: 11px; letter-spacing: 0.08em; }
+@media (max-width: 600px) { .hud { padding: 20px; } .telemetry { top: 56px; left: 20px; right: auto; } .hint { left: 20px; bottom: 20px; } .rover-frame { inset: 10px; } }
