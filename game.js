@@ -11,7 +11,10 @@
   var compassNeedle = document.getElementById("compass-needle");
   var minimapMarker = document.getElementById("minimap-marker");
   var minimapFacing = document.getElementById("minimap-facing");
+  var debugBanner = document.getElementById("debug-banner");
   var images = {};
+  var imageStatus = {};
+  var warnedMissing = {};
   var state = { x: MartianWorld.WORLD.start.x, y: MartianWorld.WORLD.start.y, heading: MartianWorld.WORLD.start.heading };
   var transition = null;
   var bumpTimer = 0;
@@ -25,6 +28,8 @@
   var lastInteraction = performance.now();
   var fullscreenRequested = false;
   var idleDuration = 60000;
+  var debugMode = new URLSearchParams(window.location.search).get("debug") === "1";
+  if (debugMode && debugBanner) debugBanner.style.display = "block";
   if (eventMode) document.body.classList.add("event-mode");
 
   function resize() {
@@ -54,6 +59,15 @@
 
   function drawNode(node, heading, zoom, alpha, width, height) {
     var image = images[node.image];
+    var fallbackNode = null;
+    if (!image) {
+      fallbackNode = nearestRealNode(node);
+      if (fallbackNode) image = images[fallbackNode.image];
+      if (!warnedMissing[node.image]) {
+        console.warn("Panorama failed to load; reusing nearest real panorama", node.x, node.y, node.image);
+        warnedMissing[node.image] = true;
+      }
+    }
     if (!image) return;
     var imageWidth = image.naturalWidth || image.width;
     var sourceWidth = imageWidth * MartianWorld.WORLD.fovDegrees / MartianWorld.WORLD.spanDegrees / zoom;
@@ -63,11 +77,32 @@
     ctx.globalAlpha = 1;
   }
 
+  function nearestRealNode(node) {
+    var nearest = null;
+    var distance = Infinity;
+    Object.keys(MartianWorld.WORLD.nodes).forEach(function (key) {
+      var candidate = MartianWorld.WORLD.nodes[key];
+      if (candidate.source !== "real" || imageStatus[candidate.image] !== "loaded") return;
+      var candidateDistance = Math.abs(candidate.x - node.x) + Math.abs(candidate.y - node.y);
+      if (candidateDistance < distance) {
+        nearest = candidate;
+        distance = candidateDistance;
+      }
+    });
+    return nearest;
+  }
+
+  function updateDebug(node) {
+    if (!debugMode || !debugBanner || !node) return;
+    var status = imageStatus[node.image] || "pending";
+    debugBanner.textContent = "NODE (" + node.x + "," + node.y + ") · " + node.image + " · " + node.source + " · load: " + status;
+    debugBanner.classList.toggle("error", status !== "loaded");
+  }
+
   function render() {
     var width = window.innerWidth;
     var height = window.innerHeight;
-    ctx.fillStyle = "#351611";
-    ctx.fillRect(0, 0, width, height);
+    ctx.clearRect(0, 0, width, height);
     if (!ready) return;
     var shake = bumpTimer > 0 ? Math.sin(bumpTimer * 0.09) * Math.min(5, bumpTimer * 0.03) : 0;
     ctx.save();
@@ -92,6 +127,7 @@
     ctx.fillStyle = shade;
     ctx.fillRect(0, 0, width, height);
     updateHud();
+    updateDebug(transition ? transition.toNode : MartianWorld.getNode(state.x, state.y));
   }
 
   function updateHud() {
@@ -187,9 +223,11 @@
     var loaded = 0;
     keys.forEach(function (nodeKey) {
       var path = nodes[nodeKey].image;
+      imageStatus[path] = "loading";
       var image = new Image();
       image.onload = function () {
         images[path] = image;
+        imageStatus[path] = "loaded";
         loaded += 1;
         var percent = Math.round(loaded / keys.length * 100);
         progressBar.style.width = percent + "%";
@@ -200,7 +238,19 @@
           render();
         }
       };
-      image.onerror = function () { progressText.textContent = "Panorama failed to load: " + path; };
+      image.onerror = function () {
+        imageStatus[path] = "failed";
+        loaded += 1;
+        console.warn("Panorama image failed to load", path);
+        progressText.textContent = "Panorama failed to load: " + path;
+        var percent = Math.round(loaded / keys.length * 100);
+        progressBar.style.width = percent + "%";
+        if (loaded === keys.length) {
+          ready = true;
+          loading.classList.add("ready");
+          render();
+        }
+      };
       image.src = path;
     });
   }

@@ -15,19 +15,19 @@
       WORLD.nodes[x + ":" + y] = {
         x: x,
         y: y,
-        image: "assets/panoramas/node_" + x + "_" + y + ".png",
-        kind: "placeholder"
+        image: "assets/panoramas/node_" + x + "_" + y + ".jpg",
+        source: "derived"
       };
     }
   }
 
-  // The audited 2048x512 (4:1) panorama is the real start location. Every
-  // other slot remains a deterministic offline placeholder.
+  // The audited 2048x512 (4:1) panorama is the real start location. The
+  // remaining slots use static offline variants derived from that panorama.
   WORLD.nodes["1:3"] = {
     x: 1,
     y: 3,
     image: "assets/panoramas/martian_panorama_seamless.png",
-    kind: "real",
+    source: "real",
     sourceDimensions: "2048x512"
   };
 
