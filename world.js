@@ -6,7 +6,7 @@
     height: 4,
     spanDegrees: 360,
     fovDegrees: 90,
-    start: { x: 1, y: 1, heading: 0 },
+    start: { x: 1, y: 3, heading: 0 },
     nodes: {}
   };
 
@@ -39,11 +39,45 @@
     return Math.round(normalized / 90) % 4;
   }
 
+  function directionVector(cardinal) {
+    return [
+      { x: 0, y: -1 },
+      { x: 1, y: 0 },
+      { x: 0, y: 1 },
+      { x: -1, y: 0 }
+    ][cardinal];
+  }
+
+  function inBounds(x, y, world) {
+    var map = world || WORLD;
+    return x >= 0 && x < map.width && y >= 0 && y < map.height;
+  }
+
+  function moveOneNode(current, direction, world) {
+    var map = world || WORLD;
+    var step = direction >= 0 ? 1 : -1;
+    var cardinal = snapCardinal(current.heading);
+    var vector = directionVector(cardinal);
+    var nextX = current.x + vector.x * step;
+    var nextY = current.y + vector.y * step;
+    var nextState = { x: current.x, y: current.y, heading: normalizeHeading(current.heading) };
+    if (!inBounds(nextX, nextY, map)) {
+      return { state: nextState, moved: false, blocked: true, direction: cardinal };
+    }
+    nextState.x = nextX;
+    nextState.y = nextY;
+    return { state: nextState, moved: true, blocked: false, direction: cardinal };
+  }
+
   global.MartianWorld = {
     WORLD: WORLD,
     key: key,
     getNode: getNode,
     normalizeHeading: normalizeHeading,
-    snapCardinal: snapCardinal
+    snapCardinal: snapCardinal,
+    directionVector: directionVector,
+    inBounds: inBounds,
+    moveOneNode: moveOneNode
   };
-}(window));
+  if (typeof module !== "undefined" && module.exports) module.exports = global.MartianWorld;
+}(typeof window !== "undefined" ? window : globalThis));

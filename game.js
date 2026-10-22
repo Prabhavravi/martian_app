@@ -10,9 +10,12 @@
   var coordsReadout = document.getElementById("coords");
   var images = {};
   var state = { x: MartianWorld.WORLD.start.x, y: MartianWorld.WORLD.start.y, heading: MartianWorld.WORLD.start.heading };
+  var transition = null;
+  var bumpTimer = 0;
   var turnInput = 0;
   var lastTime = 0;
   var ready = false;
+  var transitionDuration = 700;
   var cardinalNames = ["N", "E", "S", "W"];
 
   function resize() {
@@ -40,19 +43,39 @@
     }
   }
 
-  function render() {
-    var node = MartianWorld.getNode(state.x, state.y);
+  function drawNode(node, heading, zoom, alpha, width, height) {
     var image = images[node.image];
+    if (!image) return;
+    var imageWidth = image.naturalWidth || image.width;
+    var sourceWidth = imageWidth * MartianWorld.WORLD.fovDegrees / MartianWorld.WORLD.spanDegrees / zoom;
+    var sourceX = imageWidth * MartianWorld.normalizeHeading(heading) / MartianWorld.WORLD.spanDegrees - sourceWidth / 2;
+    ctx.globalAlpha = alpha;
+    drawWrapped(image, sourceX, sourceWidth, width, height);
+    ctx.globalAlpha = 1;
+  }
+
+  function render() {
     var width = window.innerWidth;
     var height = window.innerHeight;
     ctx.fillStyle = "#351611";
     ctx.fillRect(0, 0, width, height);
-    if (!image) return;
-    var imageWidth = image.naturalWidth || image.width;
-    var imageHeight = image.naturalHeight || image.height;
-    var sourceWidth = imageWidth * MartianWorld.WORLD.fovDegrees / MartianWorld.WORLD.spanDegrees;
-    var sourceX = imageWidth * MartianWorld.normalizeHeading(state.heading) / MartianWorld.WORLD.spanDegrees - sourceWidth / 2;
-    drawWrapped(image, sourceX, sourceWidth, width, height);
+    if (!ready) return;
+    var shake = bumpTimer > 0 ? Math.sin(bumpTimer * 0.09) * Math.min(5, bumpTimer * 0.03) : 0;
+    ctx.save();
+    ctx.translate(shake, 0);
+    if (transition) {
+      var progress = Math.min(1, Math.max(0, (performance.now() - transition.startedAt) / transitionDuration));
+      if (transition.direction > 0) {
+        drawNode(transition.fromNode, state.heading, 1 + 0.2 * progress, 1 - progress, width, height);
+        drawNode(transition.toNode, state.heading, 0.9 + 0.1 * progress, progress, width, height);
+      } else {
+        drawNode(transition.fromNode, state.heading, 0.9 + 0.1 * progress, 1 - progress, width, height);
+        drawNode(transition.toNode, state.heading, 1.2 - 0.2 * progress, progress, width, height);
+      }
+    } else {
+      drawNode(MartianWorld.getNode(state.x, state.y), state.heading, 1, 1, width, height);
+    }
+    ctx.restore();
     var shade = ctx.createLinearGradient(0, 0, 0, height);
     shade.addColorStop(0, "rgba(12, 5, 4, 0.12)");
     shade.addColorStop(0.68, "rgba(12, 5, 4, 0)");
@@ -69,10 +92,32 @@
     coordsReadout.textContent = String(state.x + 1).padStart(2, "0") + " · " + String(state.y + 1).padStart(2, "0");
   }
 
+  function requestMove(direction) {
+    if (!ready || transition) return;
+    var result = MartianWorld.moveOneNode(state, direction, MartianWorld.WORLD);
+    if (!result.moved) {
+      bumpTimer = 220;
+      return;
+    }
+    transition = {
+      fromNode: MartianWorld.getNode(state.x, state.y),
+      toNode: MartianWorld.getNode(result.state.x, result.state.y),
+      direction: direction,
+      targetState: result.state,
+      startedAt: performance.now()
+    };
+    turnInput = 0;
+  }
+
   function tick(time) {
     var dt = lastTime ? Math.min(0.05, (time - lastTime) / 1000) : 0;
     lastTime = time;
-    if (ready && turnInput) state.heading = MartianWorld.normalizeHeading(state.heading + turnInput * 70 * dt);
+    if (bumpTimer > 0) bumpTimer = Math.max(0, bumpTimer - dt * 1000);
+    if (transition && time - transition.startedAt >= transitionDuration) {
+      state = transition.targetState;
+      transition = null;
+    }
+    if (ready && !transition && turnInput) state.heading = MartianWorld.normalizeHeading(state.heading + turnInput * 70 * dt);
     render();
     requestAnimationFrame(tick);
   }
@@ -105,9 +150,14 @@
 
   window.addEventListener("resize", resize);
   window.addEventListener("keydown", function (event) {
-    if (["ArrowLeft", "ArrowRight", "a", "d", "A", "D"].indexOf(event.key) !== -1) event.preventDefault();
+    var turnKeys = ["ArrowLeft", "ArrowRight", "a", "d", "A", "D"];
+    var moveKeys = ["ArrowUp", "ArrowDown", "w", "s", "W", "S"];
+    if (turnKeys.indexOf(event.key) !== -1 || moveKeys.indexOf(event.key) !== -1) event.preventDefault();
+    if (transition) return;
     if (event.key === "ArrowLeft" || event.key === "a" || event.key === "A") setTurn(-1);
     if (event.key === "ArrowRight" || event.key === "d" || event.key === "D") setTurn(1);
+    if (!event.repeat && (event.key === "ArrowUp" || event.key === "w" || event.key === "W")) requestMove(1);
+    if (!event.repeat && (event.key === "ArrowDown" || event.key === "s" || event.key === "S")) requestMove(-1);
   });
   window.addEventListener("keyup", function (event) {
     if (["ArrowLeft", "ArrowRight", "a", "d", "A", "D"].indexOf(event.key) !== -1) setTurn(0);

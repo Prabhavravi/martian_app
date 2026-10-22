@@ -16,8 +16,9 @@ The logic test is `tests/logic.test.js` and runs with `node` only.
 
 The world is a 4×4 grid (`WORLD.width` and `WORLD.height` in `world.js`). Each
 node resolves to `assets/panoramas/node_{x}_{y}.jpg` or `.png`; a node can
-instead point at a real panorama. The initial state is `{x: 1, y: 1,
-heading: 0}`. Heading is degrees, normalized to `[0, 360)`, with 0° north,
+instead point at a real panorama. The initial state is `{x: 1, y: 3,
+heading: 0}` so the demo can make three forward moves north before reversing.
+Heading is degrees, normalized to `[0, 360)`, with 0° north,
 90° east, 180° south, and 270° west.
 
 Movement snaps the current heading to the nearest cardinal direction. Forward
