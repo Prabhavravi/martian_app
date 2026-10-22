@@ -6,6 +6,32 @@ from pathlib import Path
 from typing import Any
 
 END_BEHAVIORS = ("LOOP", "CLAMP", "PING-PONG")
+RENDER_MODES = ("layered", "single_panorama", "single_panorama_perspective")
+
+
+@dataclass
+class DepthConfig:
+    min: float
+    max: float
+    start: float
+    speed: float
+    zoom_far: float
+    zoom_near: float
+    offset_far_px: float
+    offset_near_px: float
+    horizon_ratio: float
+
+    def __post_init__(self) -> None:
+        if not self.min < self.max:
+            raise ValueError(f"depth.min ({self.min}) must be < depth.max ({self.max})")
+        if not self.min <= self.start <= self.max:
+            raise ValueError(f"depth.start ({self.start}) must be within [{self.min}, {self.max}]")
+        if self.zoom_far <= 0:
+            raise ValueError(f"depth.zoom_far ({self.zoom_far}) must be positive")
+        if self.zoom_near <= 0:
+            raise ValueError(f"depth.zoom_near ({self.zoom_near}) must be positive")
+        if not 0.0 <= self.horizon_ratio <= 1.0:
+            raise ValueError(f"depth.horizon_ratio ({self.horizon_ratio}) must be in [0, 1]")
 
 
 @dataclass
@@ -45,6 +71,8 @@ class Manifest:
     viewport_h: int
     scroll_speed_px_per_sec: float
     layers: list[Layer]
+    depth: DepthConfig | None = None
+    render_mode: str = "layered"
 
     @property
     def base_layer(self) -> Layer:
@@ -84,6 +112,23 @@ class Manifest:
                 )
             )
         viewport = data.get("viewport", {})
+        render_mode = str(data.get("render_mode", "layered"))
+        if render_mode not in RENDER_MODES:
+            raise ValueError(f"bad render_mode: {render_mode}")
+        depth_data = data.get("depth")
+        depth = None
+        if depth_data is not None:
+            depth = DepthConfig(
+                min=float(depth_data["min"]),
+                max=float(depth_data["max"]),
+                start=float(depth_data["start"]),
+                speed=float(depth_data["speed"]),
+                zoom_far=float(depth_data["zoom_far"]),
+                zoom_near=float(depth_data["zoom_near"]),
+                offset_far_px=float(depth_data["offset_far_px"]),
+                offset_near_px=float(depth_data["offset_near_px"]),
+                horizon_ratio=float(depth_data["horizon_ratio"]),
+            )
         return cls(
             version=int(data.get("version", 1)),
             tile_size=(int(data["tile_size"][0]), int(data["tile_size"][1])),
@@ -93,6 +138,8 @@ class Manifest:
             viewport_h=int(viewport.get("h", data.get("viewport_h", 720))),
             scroll_speed_px_per_sec=float(data.get("scroll_speed_px_per_sec", 300.0)),
             layers=layers,
+            depth=depth,
+            render_mode=render_mode,
         )
 
     def save(self, path: str | Path) -> None:
@@ -129,7 +176,24 @@ class Manifest:
             "end_behavior": self.end_behavior,
             "viewport": {"w": self.viewport_w, "h": self.viewport_h},
             "scroll_speed_px_per_sec": self.scroll_speed_px_per_sec,
+            "depth": self._depth_to_dict() if self.depth is not None else None,
+            "render_mode": self.render_mode,
             "layers": layers_out,
         }
         with open(path, "w") as f:
             json.dump(data, f, indent=2)
+
+    def _depth_to_dict(self) -> dict[str, Any] | None:
+        if self.depth is None:
+            return None
+        return {
+            "min": self.depth.min,
+            "max": self.depth.max,
+            "start": self.depth.start,
+            "speed": self.depth.speed,
+            "zoom_far": self.depth.zoom_far,
+            "zoom_near": self.depth.zoom_near,
+            "offset_far_px": self.depth.offset_far_px,
+            "offset_near_px": self.depth.offset_near_px,
+            "horizon_ratio": self.depth.horizon_ratio,
+        }

@@ -37,6 +37,27 @@ class Game:
         self.renderer = Renderer(self.screen, self.manifest, self.assets_root, self.cache)
         self.running = True
         self.direction = 0
+        self.depth_direction = 0
+        self._horizontal_keys: set[int] = set()
+        self._depth_keys: set[int] = set()
+
+    @staticmethod
+    def _axis_direction(keys: set[int], negative_keys: set[int], positive_keys: set[int]) -> int:
+        negative = bool(keys & negative_keys)
+        positive = bool(keys & positive_keys)
+        return int(positive) - int(negative)
+
+    def _refresh_directions(self) -> None:
+        self.direction = self._axis_direction(
+            self._horizontal_keys,
+            {pygame.K_LEFT, pygame.K_a},
+            {pygame.K_RIGHT, pygame.K_d},
+        )
+        self.depth_direction = self._axis_direction(
+            self._depth_keys,
+            {pygame.K_UP, pygame.K_w},
+            {pygame.K_DOWN, pygame.K_s},
+        )
 
     def handle_events(self) -> None:
         for event in pygame.event.get():
@@ -45,18 +66,25 @@ class Game:
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     self.running = False
-                elif event.key in (pygame.K_LEFT, pygame.K_a):
-                    self.direction = -1
-                elif event.key in (pygame.K_RIGHT, pygame.K_d):
-                    self.direction = 1
                 elif event.key == pygame.K_SPACE:
                     self.renderer.debug = not self.renderer.debug
+                elif event.key in (pygame.K_LEFT, pygame.K_RIGHT, pygame.K_a, pygame.K_d):
+                    self._horizontal_keys.add(event.key)
+                    self._refresh_directions()
+                elif event.key in (pygame.K_UP, pygame.K_DOWN, pygame.K_w, pygame.K_s):
+                    self._depth_keys.add(event.key)
+                    self._refresh_directions()
             elif event.type == pygame.KEYUP:
                 if event.key in (pygame.K_LEFT, pygame.K_RIGHT, pygame.K_a, pygame.K_d):
-                    self.direction = 0
+                    self._horizontal_keys.discard(event.key)
+                    self._refresh_directions()
+                elif event.key in (pygame.K_UP, pygame.K_DOWN, pygame.K_w, pygame.K_s):
+                    self._depth_keys.discard(event.key)
+                    self._refresh_directions()
 
     def update(self, dt: float) -> None:
         self.camera.set_direction(self.direction)
+        self.camera.set_depth_direction(self.depth_direction)
         self.camera.update(dt)
 
     def frame(self, dt: float) -> float:
@@ -66,8 +94,9 @@ class Game:
             return 0.0
         self.update(dt)
         effective = self.camera.effective()
+        effective_depth = self.camera.effective_depth()
         self.renderer.fps = self.clock.get_fps()
-        self.renderer.render(effective)
+        self.renderer.render(effective, effective_depth, camera=self.camera)
         pygame.display.flip()
         return time.perf_counter() - start
 
@@ -148,14 +177,14 @@ class Game:
         return report
 
 
-if __name__ == "__main__":
+def main(argv=None) -> None:
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--manifest", default="assets/manifest.json")
+    parser.add_argument("--manifest", default="assets/real/manifest.json")
     parser.add_argument("--assets", default=None)
     parser.add_argument("--bench", type=float, default=0.0)
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     game = Game(args.manifest, args.assets)
     if args.bench > 0:
         report = game.bench(args.bench)
@@ -163,3 +192,7 @@ if __name__ == "__main__":
             print(f"{key}: {value}")
     else:
         game.run()
+
+
+if __name__ == "__main__":
+    main()

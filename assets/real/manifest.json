@@ -11,6 +11,18 @@
     "h": 720
   },
   "scroll_speed_px_per_sec": 300.0,
+  "render_mode": "single_panorama_perspective",
+  "depth": {
+    "min": 0.0,
+    "max": 1.0,
+    "start": 0.5,
+    "speed": 1.0,
+    "zoom_far": 0.92,
+    "zoom_near": 1.18,
+    "offset_far_px": -24,
+    "offset_near_px": 48,
+    "horizon_ratio": 0.45
+  },
   "layers": [
     {
       "name": "sky",
