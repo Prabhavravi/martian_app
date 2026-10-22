@@ -21,6 +21,16 @@
     }
   }
 
+  // The audited 2048x512 (4:1) panorama is the real start location. Every
+  // other slot remains a deterministic offline placeholder.
+  WORLD.nodes["1:3"] = {
+    x: 1,
+    y: 3,
+    image: "assets/panoramas/martian_panorama_seamless.png",
+    kind: "real",
+    sourceDimensions: "2048x512"
+  };
+
   function key(x, y) {
     return x + ":" + y;
   }
